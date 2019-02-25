@@ -17,6 +17,9 @@ import com.igorganapolsky.vibratingwatchapp.data.models.Timer;
 import com.igorganapolsky.vibratingwatchapp.ui.fragments.TimerDeleteFragment;
 import com.igorganapolsky.vibratingwatchapp.util.TimerTransform;
 
+/**
+ * TimerDetailsActivity using to show timer details.
+ */
 public class TimerDetailsActivity extends AppCompatActivity implements View.OnClickListener {
 
     private final int SETTING_REQUEST_CODE = 100;
@@ -82,6 +85,7 @@ public class TimerDetailsActivity extends AppCompatActivity implements View.OnCl
         super.onActivityResult(requestCode, resultCode, data);
 
         switch (requestCode) {
+            // Handle ActivityResult if it was timer editing.
             case SETTING_REQUEST_CODE:
                 if (resultCode == SETTING_SUCCESS_CODE) {
                     model = (Timer) data.getSerializableExtra("TIMER_MODEL");
@@ -143,6 +147,11 @@ public class TimerDetailsActivity extends AppCompatActivity implements View.OnCl
         }
     }
 
+    /**
+     * Making the new {@link CountDownTimer} object to do countdown.
+     *
+     * @return new instance of {@link CountDownTimer}.
+     */
     private CountDownTimer prepareCountDown() {
         long millisecondsLeft = timeLeft > 0 ? timeLeft : model.getMilliseconds();
 
@@ -169,6 +178,9 @@ public class TimerDetailsActivity extends AppCompatActivity implements View.OnCl
         }.start();
     }
 
+    /**
+     * Clearing the currentTimer
+     */
     private void clearCountDown() {
         timeLeft = 0;
 
@@ -178,6 +190,12 @@ public class TimerDetailsActivity extends AppCompatActivity implements View.OnCl
         }
     }
 
+    /**
+     * Render current timer value.
+     *
+     * @param timeLeft number of milliseconds left.
+     * @param animateProgress animate progress value.
+     */
     private void renderTime(long timeLeft, boolean animateProgress) {
         int progress = (int) ((double) timeLeft / (double) model.getMilliseconds() * 100.);
         pbTime.setProgress(100 - progress, animateProgress);
@@ -185,6 +203,11 @@ public class TimerDetailsActivity extends AppCompatActivity implements View.OnCl
         tvTime.setText(TimerTransform.millisToTimeString(timeLeft));
     }
 
+    /**
+     * Show or hide play or pause button.
+     *
+     * @param isPause if true show pause otherwise play.
+     */
     private void showPlayOrPause(boolean isPause) {
         if (!isPause) {
             ivStart.setVisibility(View.VISIBLE);
@@ -203,6 +226,10 @@ public class TimerDetailsActivity extends AppCompatActivity implements View.OnCl
         }
     }
 
+    /**
+     * Disable or enable settings and remove buttons.
+     * @param disable if true disabled otherwise enabled.
+     */
     private void disableAdditionalButtons(boolean disable) {
         ivTimerSettings.setClickable(!disable);
         ivTimerRemove.setClickable(!disable);

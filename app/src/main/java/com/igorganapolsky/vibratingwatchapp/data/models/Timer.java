@@ -6,23 +6,44 @@ import android.arch.persistence.room.PrimaryKey;
 
 import java.io.Serializable;
 
+/**
+ * Timer entity (model).
+ */
 @Entity
 public class Timer implements Serializable {
+    /**
+     * Timer id.
+     */
     @PrimaryKey(autoGenerate = true)
     private int id;
 
+    /**
+     * Total time in milliseconds.
+     */
     @ColumnInfo(name = "time")
     private long milliseconds;
 
+    /**
+     * Buzz mode.
+     */
     @ColumnInfo(name = "buzz_mode")
     private int buzzMode;
 
+    /**
+     * Repeats count.
+     */
     @ColumnInfo(name = "repeat")
     private int repeat;
 
+    /**
+     * Milliseconds left.
+     */
     @ColumnInfo(name = "timestamp")
     private long timestamp;
 
+    /**
+     * Previous state.
+     */
     @ColumnInfo(name = "state")
     private String state;
 

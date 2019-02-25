@@ -16,6 +16,9 @@ import com.igorganapolsky.vibratingwatchapp.ui.models.SetTimerViewModel;
 import com.igorganapolsky.vibratingwatchapp.ui.models.TimerValue;
 import com.igorganapolsky.vibratingwatchapp.util.TimerTransform;
 
+/**
+ * SetTimerActivity using for add or edit timer.
+ */
 public class SetTimerActivity extends AppCompatActivity implements View.OnClickListener {
 
     private final int SUCCESS_CODE = 101;

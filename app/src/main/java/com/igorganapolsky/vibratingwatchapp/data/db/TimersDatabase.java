@@ -5,6 +5,9 @@ import android.arch.persistence.room.RoomDatabase;
 import com.igorganapolsky.vibratingwatchapp.data.dao.TimersDao;
 import com.igorganapolsky.vibratingwatchapp.data.models.Timer;
 
+/**
+ * Database descriptor.
+ */
 @Database(entities = {Timer.class}, version = 1, exportSchema = true)
 public abstract class TimersDatabase extends RoomDatabase {
 
